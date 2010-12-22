@@ -1,0 +1,23 @@
+let g:pdv_cfg_Version = "$id$"
+let g:pdv_cfg_Author = "SATAKE Hiroyuki <h-satake@prod.sus4.co.jp>"
+let g:pdv_cfg_Copyright = "2010- sus4 Co., LTD (CONTACT info@sus4.co.jp)"
+let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
+
+let tlist_php_settings = 'php;c:class;d:constant;f:function'
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Enable_Fold_Column = 0
+
+let php_folding = 3
+let php_sql_query = 1
+let php_htmlInStrings = 1
+let php_show_semicolon = 0
+let php_fold_heredoc = 1
+colorscheme wombat
+filetype plugin off
+
+" Run JSLint on the current file when <F5> is pressed.
+map <F5> :JSLint<CR>
+map <F2> oDate: <Esc>:read !date<CR>kJ
+
+" For SnipMate 
+au BufNewFile,BufRead *.tpl set filetype=html.tpl

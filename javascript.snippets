@@ -1,0 +1,221 @@
+# Prototype
+snippet proto
+	${1:class_name}.prototype.${2:method_name} =
+	function(${3:first_argument}) {
+		${4:// body...}
+	};
+# Function
+snippet fun
+	function ${1:function_name} (${2:argument}) {
+		${3:// body...}
+	};
+
+# Function2
+snippet func
+	function ${1:function_name} (${2:argument}) 
+	{
+		${3:// body...}
+	};
+# Function with Name
+snippet function
+	var ${1:funciton_name} = function (${2:argument}) 
+	{
+		${3:// body...}
+	};
+# Anonymous Function
+snippet f
+	function(${1}) {${2}};
+# if
+snippet if
+	if (${1:true}) {${2}};
+# if ... else
+snippet ife
+	if (${1:true}) {${2}}
+	else{${3}};
+# tertiary conditional
+snippet t
+	${1:/* condition */} ? ${2:a} : ${3:b}
+# switch
+snippet switch
+	switch(${1:expression}) {
+		case '${3:case}':
+			${4:// code}
+			break;
+		${5}
+		default:
+			${2:// code}
+	}
+# case
+snippet case
+	case '${1:case}':
+		${2:// code}
+		break;
+	${3}
+# for (...) {...}
+snippet for
+	for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3:++}) {
+		${4:$1[$2]}
+	}
+# for (...) {...} (Improved Native For-Loop)
+snippet forr
+	for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3:--}) {
+		${4:$1[$2]}
+	}
+# for (...) {...} (Improved Native For-Loop)
+snippet fore
+	for (var ${2:i} in ${1:Things}) {
+		if ($1.hasOwnProperty($2)) {
+			${3:$1[$2]}
+		}
+	}
+# while (...) {...}
+snippet wh
+	while (${1:/* condition */}) {
+		${2:/* code */}
+	}
+# do...while
+snippet do
+	do {
+		${2:/* code */}
+	} while (${1:/* condition */});
+# Object Method
+snippet :f
+	${1:method_name}: function(${2:attribute}) {
+		${4}
+	}${3:,}
+# setTimeout function
+snippet timeout
+	setTimeout(function() {${3}}${2}, ${1:10};
+# Get Elements
+snippet get
+	getElementsBy${1:TagName}('${2}')${3}
+# Get Element
+snippet gett
+	getElementBy${1:Id}('${2}')${3}
+
+#Ext
+#Ext SetUp
+snippet extready
+	Ext.onReady(function(){
+		${1:Code}
+	});
+#Sencha Touch Setup
+snippet stsetup
+	Ext.setup({
+		tabletStartupScreen: "${1:tablet_startup.png}",
+		phoneStartupScreen: "${2:phone_startup.png}",
+		icon: "${3:icon.png}",
+		glossOnIcon: ${4:false},
+		onReady: function() {
+			${5:code}
+		}
+	});
+
+#Ext Class
+snippet extclass
+	${1:Class_Name} = Ext.extend(${2:superclass},{
+		initComponent:function()
+		{
+			$1.superclass.initComponent.call(this);
+		}
+	});
+	Ext.reg("${3:reg_name}",$1);
+
+#Ext Panel
+snippet extpanel
+	new Ext.Panel({
+		title:"${1:title}",
+		items:${2:item_array},
+		html:"${3:html_str}",
+		collapsible:${4:true},
+		collapsed:${5:true},
+		split:${6:false},
+	})
+#Ext Grid
+snippet extgrid
+	new Ext.grid.GridPanel({
+		title:"${1:title}",
+		iconCls:"${2:iconCls}",
+		loadMask: true,
+		stripeRows:true,
+		border: false,
+		viewConfig:{
+			deferEmptyText:false,
+			emptyText:"${3:empty_text}"
+		},
+		store:${4:store},
+		cm:${5:ColumnModel},
+		bbar:new Ext.PagingToolbar({
+			store:$4,
+			limit:${6:limit}
+		})
+	})
+#Ext Form
+snippet extfield
+	{
+		xtype:"${1:textfield}",
+		name:"${1:name}",
+		fieldLabel:"${2:label_text}",
+		emptyText:"${4:'入力してください。'}"
+	}
+#Ext Combo
+snippet extcombo
+	{
+		xtype:"${1:combo}",
+		name:"${2:name}",
+		hiddenName:"${3:hiddenName}",
+		fieldLabel:"${4:label_text}",
+		emptyText:"${5:選択してください}",
+		store:new Ext.data.JsonStore({
+			root:"rows",
+			data:${6:data},
+			fields:${7:fields}
+		}),
+		triggerAction:"all",
+		mode:"${8:remote}",
+		displayField:"${9:key}",
+		valueField:"${10:value}",
+	}
+#Ext Listeners
+snippet extlistener
+	listeners:{
+		scope:this,
+		${1:event_name}:${2:handler}
+	}
+#Ext Standard Ajax
+snippet extajax
+	this.el.mask('取得しています...');
+	Ext.Ajax.request({
+		url:${1://url},
+		params:${2://params},
+		scope:this,
+		success:function(result,opt){
+			var res = Ext.decode(result.responseText);
+			this.el.unmask();
+			if (res.success) {
+				${3://callback}
+			}else{
+				Ext.Msg.alert(
+					'エラー',
+					String.format('リクエストに失敗しました。</br>{1}',res.errmsg)
+				).setIcon(Ext.Msg.ERROR);
+			}
+		},
+		failure:function(result, opt){
+			Ext.Msg.alert('エラー','サーバーに接続できません').setIcon(Ext.Msg.ERROR);
+			this.el.unmask();
+		}
+	});
+
+#Ext DomHelper Style Dome description
+snippet extdom
+	{
+		tag:'${1:div}',
+		style:'${2:padding:3px}',
+		cn:[
+			{
+				tag:'${3:p}',
+				html:'${4://html}'
+			}
+		]
+	}
