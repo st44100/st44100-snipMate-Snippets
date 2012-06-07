@@ -1,14 +1,14 @@
 
 #function funcName(arg){}
 snippet func
-	function ${1:function_name} (${2:argument}) 
+	function ${1:function_name}(${2:argument}) 
 	{
 		${3:// body...}
-	};
+	}
 
 # var name = function(){}
 snippet function
-	var ${1:funciton_name} = function (${2:argument}) 
+	var ${1:funciton_name} = function(${2:argument}) 
 	{
 		${3:// body...}
 	};
@@ -16,13 +16,15 @@ snippet function
 # Anonymous Function
 snippet f
 	function(${1}) {${2}};
+
 # if
 snippet if
 	if (${1:true}) {${2}}
+
 # if ... else
 snippet ife
 	if (${1:true}) {${2}}
-	else{${3}};
+	else{${3}}
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
